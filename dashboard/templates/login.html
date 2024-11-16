@@ -6,29 +6,39 @@
 {% block style %}{% endblock %}
 
 {% block main %}
-<form class="auth-form" action="{% url 'login' %}" method="post">
-  <div class="error-message">
-    <p>{{ error_message }}</p>
+<div id="auth-wrapper">
+
+  <div id="auth-title-image">
+    <h2>Log in to your account</h2>
+    <h3>Start tracking your finances today</h3>
+
+    <img src="{% static 'media/manage_money.png' %}" alt="">
   </div>
 
-  {% csrf_token %}
+  <form id="auth-form" action="{% url 'login' %}" method="post">
+    <div class="error-message">
+      <p>{{ error_message }}</p>
+    </div>
 
-  <div class="financy-input-container">
-    <input class="financy-input" type="text" name="username" id="username" required>
-    <label for="username">Username</label>
-  </div>
+    {% csrf_token %}
 
-  <div class="financy-input-container">
-    <input class="financy-input" type="password" name="password" id="password" required>
-    <label for="password">Password</label>
-  </div>
+    <div class="financy-input-container">
+      <input class="financy-input" type="text" name="username" id="username" required>
+      <label for="username">Username</label>
+    </div>
 
-  <input class="financy-button" type="submit" value="Login">
+    <div class="financy-input-container">
+      <input class="financy-input" type="password" name="password" id="password" required>
+      <label for="password">Password</label>
+    </div>
 
-  <p style="margin: 1rem;">
-    <span>Don't have an account yet?</span>
-    <a class="link" href="{% url 'register' %}">Register Here</a>
-  </p>
-</form>
+    <input class="financy-button" type="submit" value="Login">
+
+    <p style="margin: 1.25rem;">
+      <span>Don't have an account yet?</span>
+      <a class="link" href="{% url 'register' %}">Register Here</a>
+    </p>
+  </form>
+</div>
 
 {% endblock %}
