@@ -1,0 +1,149 @@
+:root {
+  --background-color: #0b153f;
+  --primary-color: #fff;
+  --secondary-color: #fff;
+  --tertiary-color: #fff;
+  --text-color: #fff;
+  --green: #fff;
+  --red: #fff;
+  --gray: #fff;
+  --radius: 15px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: #fff;
+}
+
+header,
+footer,
+main {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+header {
+  flex-direction: column;
+  height: 10rem;
+  justify-content: space-between;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  height: 10rem;
+  background-color: #b4b4b4;
+}
+
+/* Header Styles */
+
+.header-nav {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-between;
+}
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  column-gap: .25rem;
+}
+
+.header-nav li a {
+  border-radius: var(--radius);
+  padding: .5rem;
+  transition: background-color .15s;
+}
+
+.header-nav li a:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Auth Forms */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin: 0 auto;
+  row-gap: 1rem;
+}
+
+.financy-input-container {
+  width: 100%;
+  height: 3rem;
+  position: relative;
+}
+
+.financy-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: var(--background-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius);
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.financy-input:focus {
+  border-color: var(--secondary-color);
+}
+
+.financy-input-container label {
+  padding: 0 .25rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: gray;
+  transition: all .15s;
+}
+
+.financy-input-container .top-label,
+.financy-input:focus+label {
+  top: 0;
+  font-size: .8rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.financy-button {
+  padding: .5rem 1rem;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.financy-button:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

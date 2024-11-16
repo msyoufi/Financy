@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block script %}{% endblock %}
+{% block style %}{% endblock %}
+
+{% block main %}
+<form class="auth-form" action="{% url 'register' %}" method="post">
+  <div class="error-message">
+    <p>{{ error_message }}</p>
+  </div>
+
+  {% csrf_token %}
+
+  <div class="financy-input-container">
+    <input class="financy-input" type="text" name="username" id="username" required>
+    <label for="username">Username</label>
+  </div>
+
+  <div class="financy-input-container">
+    <input class="financy-input" type="text" name="email" id="email" email>
+    <label for="email">Email</label>
+  </div>
+
+  <div class="financy-input-container">
+    <input class="financy-input" type="password" name="password" id="password" required>
+    <label for="password">Password</label>
+  </div>
+
+  <div class="financy-input-container">
+    <input class="financy-input" type="password" name="confirmation" id="confirmation" required>
+    <label for="confirmation">Confirm password</label>
+  </div>
+
+  <input class="financy-button" type="submit" value="Register">
+
+  <p style="margin: 1rem;">
+    <span>Already have an account?</span>
+    <a class="link" href="{% url 'login' %}">Login Here</a>
+  </p>
+</form>
+
+{% endblock %}
