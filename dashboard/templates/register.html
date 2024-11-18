@@ -6,16 +6,16 @@
 {% block style %}{% endblock %}
 
 {% block main %}
-<div id="auth-wrapper">
+<div id="auth_wrapper">
 
-  <div id="auth-title-image">
+  <div id="auth_title_image">
     <h2>Sing up today</h2>
     <h3>Take your finances to the next level</h3>
 
     <img src="{% static 'media/business_mission.png' %}" alt="">
   </div>
 
-  <form id="auth-form" action="{% url 'register' %}" method="post">
+  <form id="auth_form" action="{% url 'register' %}" method="post">
     <div class="error-message">
       <p>{{ error_message }}</p>
     </div>

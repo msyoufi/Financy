@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -64,7 +65,61 @@ def logout_view(request):
 
 @login_required
 def index(request):
-    if request.method == "POST":
-        pass
+    user = request.user
 
     return render(request, "index.html")
+
+
+@login_required
+def transactions_view(request):
+    user = request.user
+
+    if request.method == "POST":
+        try:
+            tranx_data = clean_data(request.POST)
+            tranx = Transaction(user=user, **tranx_data)
+            tranx.save()
+            return redirect("transactions")
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+
+    transactions = Transaction.objects.filter(user=user).order_by("-date")
+
+    return render(request, "transactions.html", {"transactions": transactions})
+
+
+@login_required
+def transactions(request, tranx_id):
+    user = request.user
+
+    if tranx_id is None:
+        return JsonResponse({"error": "Must provide a transaction ID"}, status=400)
+
+    try:
+        tranx = Transaction.objects.get(user=user, id=tranx_id)
+    except Transaction.DoesNotExist:
+        return JsonResponse({"error": "Transaction not found!"}, status=404)
+
+    if request.method == "GET":
+        return JsonResponse(tranx.serialize(), status=200)
+
+    if request.method == "POST":
+        try:
+            tranx_data = clean_data(request.POST)
+            for key, value in tranx_data.items():
+                setattr(tranx, key, value)
+            tranx.save()
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+
+    if request.method == "DELETE":
+        tranx.delete()
+
+    return redirect("transactions")
+
+
+def clean_data(row_data):
+    data = dict(row_data)
+    data.pop("csrfmiddlewaretoken")
+    data = {k: v[0] if isinstance(v, list) else v for k, v in data.items()}
+    return data
