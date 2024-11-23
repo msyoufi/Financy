@@ -30,6 +30,11 @@
   background-color: var(--red);
 }
 
+.placeholder {
+  margin-top: 2rem;
+  text-align: center;
+}
+
 /* Transaction from styles */
 .delete-dialog,
 #transaction_form {

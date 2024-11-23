@@ -9,9 +9,16 @@ class User(AbstractUser):
 class Transaction(models.Model):
     CATEGORY_CHOICES = [
         ("FOOD", "Food & Dining"),
-        ("TRANS", "Transportation"),
+        ("HLTH", "Health & Fitness"),
         ("SHOP", "Shopping"),
+        ("TRANS", "Transportation"),
+        ("ENT", "Entertainment"),
+        ("TRVEL", "Travel"),
+        ("SALRY", "Salary"),
+        ("HOUSE", "Housing"),
         ("BILLS", "Bills & Utilities"),
+        ("INVST", "Investments"),
+        ("SAVE", "Savings"),
         ("OTHER", "Other"),
     ]
 

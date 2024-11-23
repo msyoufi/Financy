@@ -2,15 +2,13 @@
 
 {% load static %}
 
-{% block script %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/transactions.css' %}">
 <script src="{% static 'js/transactions.js' %}" defer></script>
 {% endblock %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/transactions.css' %}">
-{% endblock %}
-
 {% block main %}
+<h1>Transactions</h1>
 
 <div class="transactions-list">
   <div class="transactions-list-header">
@@ -46,6 +44,10 @@
       </button>
     </div>
   </div>
+  {% empty %}
+  <p class="placeholder">
+    You have no transactions yet in your portfolio
+  </p>
   {% endfor %}
 </div>
 
@@ -83,11 +85,9 @@
     <div class="financy-input-container">
       <select class="financy-input" name="category" id="category" required>
         <option value="" hidden selected disabled></option>
-        <option value="FOOD">Food & Dining</option>
-        <option value="TRANS">Transportation</option>
-        <option value="SHOP">Shopping</option>
-        <option value="BILLS">Bills & Utilities</option>
-        <option value="OTHER">Other</option>
+        {% for category in categories %}
+        <option value="{{category.code}}">{{category.display}}</option>
+        {% endfor %}
       </select>
       <label for="category">Category</label>
     </div>

@@ -1,0 +1,18 @@
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.placeholder {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.placeholder p {
+  margin-bottom: 1rem;
+}
+
+.placeholder p .link {
+  text-decoration: underline;
+}

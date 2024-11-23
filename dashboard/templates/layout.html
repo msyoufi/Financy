@@ -13,16 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
   <script src="{% static 'js/main.js' %}" defer></script>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  {% block script %}{% endblock %}
-  {% block style %}{% endblock %}
+  {% block head %}{% endblock %}
 </head>
 
 <body>
 
   <header>
-    <h1>
-      <a href="{% url 'index' %}">Financy</a>
-    </h1>
+    <a id="logo" href="{% url 'index' %}">Financy</a>
 
     <nav>
       <ul>

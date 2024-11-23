@@ -2,10 +2,23 @@
 
 {% load static %}
 
-{% block script %}{% endblock %}
-{% block style %}{% endblock %}
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="{% static 'js/dashboard.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 
 {% block main %}
+
 <h1>Dashboard</h1>
+
+<div class="placeholder"></div>
+
+<div id="value_chart"></div>
+
+<div class="charts-container">
+  <div id="bar_chart"></div>
+  <div id="pie_chart"></div>
+</div>
 
 {% endblock %}

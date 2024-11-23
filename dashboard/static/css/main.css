@@ -46,12 +46,23 @@ footer {
   height: 10rem;
 }
 
+h1 {
+  margin-bottom: 3rem;
+}
+
 /* Header Styles */
 
 header {
   height: 7rem;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #a7a7a776;
+}
+
+#logo {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 header ul {
@@ -69,8 +80,9 @@ header nav a:hover {
 }
 
 .auth-nav a {
+  border: 2px solid var(--primary-color);
   border-radius: var(--radius);
-  padding: .5rem;
+  padding: .5rem 1rem;
   font-weight: 500;
 }
 
@@ -175,6 +187,7 @@ input[type="radio"]:checked+label {
   transform: translateY(-50%);
   color: var(--gray);
   transition: .15s;
+  pointer-events: none;
 }
 
 .financy-input-container .top-label,

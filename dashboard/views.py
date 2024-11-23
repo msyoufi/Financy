@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from .models import Transaction, User
 from django.http import HttpResponseRedirect
+from .utils import clean_data, get_chart_data
 
 
 def register_view(request):
@@ -65,9 +66,15 @@ def logout_view(request):
 
 @login_required
 def index(request):
-    user = request.user
-
     return render(request, "index.html")
+
+
+@login_required
+def charts(request):
+    transactions = Transaction.objects.filter(user=request.user).order_by("date")
+    chart_data = get_chart_data(transactions) if transactions.exists() else {}
+
+    return JsonResponse(chart_data, safe=False)
 
 
 @login_required
@@ -85,7 +92,16 @@ def transactions_view(request):
 
     transactions = Transaction.objects.filter(user=user).order_by("-date")
 
-    return render(request, "transactions.html", {"transactions": transactions})
+    categories = [
+        {"code": category[0], "display": category[1]}
+        for category in Transaction.CATEGORY_CHOICES
+    ]
+
+    return render(
+        request,
+        "transactions.html",
+        {"transactions": transactions, "categories": categories},
+    )
 
 
 @login_required
@@ -116,10 +132,3 @@ def transactions(request, tranx_id):
         tranx.delete()
 
     return redirect("transactions")
-
-
-def clean_data(row_data):
-    data = dict(row_data)
-    data.pop("csrfmiddlewaretoken")
-    data = {k: v[0] if isinstance(v, list) else v for k, v in data.items()}
-    return data
