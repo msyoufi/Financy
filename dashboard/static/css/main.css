@@ -26,7 +26,6 @@ body {
 }
 
 header,
-footer,
 main {
   display: flex;
   max-width: 1200px;
@@ -38,12 +37,7 @@ main {
 main {
   flex-direction: column;
   flex: 1;
-  padding: 3rem 1rem 25vh;
-}
-
-footer {
-  border-top: 1px solid #a7a7a776;
-  height: 10rem;
+  padding: 3rem 1rem;
 }
 
 h1 {
@@ -112,6 +106,15 @@ header nav a:hover {
   width: 100%;
   max-width: 250px;
   margin-top: 3rem;
+}
+
+#auth_title_image a {
+  font-size: .7rem;
+  color: #7a7a7a;
+}
+
+#auth_title_image a:hover {
+  text-decoration: underline;
 }
 
 #auth_form {

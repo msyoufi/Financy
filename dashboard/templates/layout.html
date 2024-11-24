@@ -21,6 +21,7 @@
   <header>
     <a id="logo" href="{% url 'index' %}">Financy</a>
 
+    {% if user.is_authenticated %}
     <nav>
       <ul>
         <li><a href="{% url 'index' %}">
@@ -31,6 +32,7 @@
           </a></li>
       </ul>
     </nav>
+    {% endif %}
 
     <ul class="auth-nav">
       {% if user.is_authenticated %}
@@ -52,10 +54,6 @@
   <main>
     {% block main %}{% endblock %}
   </main>
-
-  <footer>
-    <h5>Footer</h5>
-  </footer>
 
 </body>
 
