@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from .models import Transaction, User
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 from .utils import clean_data, get_chart_data
 
 
@@ -91,6 +92,8 @@ def transactions_view(request):
             return JsonResponse({"error": str(e)}, status=400)
 
     transactions = Transaction.objects.filter(user=user).order_by("-date")
+    page_num = request.GET.get("p", 1)
+    transactions = Paginator(transactions, 10).page(page_num)
 
     categories = [
         {"code": category[0], "display": category[1]}

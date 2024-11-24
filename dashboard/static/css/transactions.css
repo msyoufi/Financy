@@ -111,3 +111,13 @@
 .delete-dialog .action-buttons button:first-child {
   background-color: var(--red);
 }
+
+/* Paginator */
+
+.paginator {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  margin: 5rem auto;
+  column-gap: 1rem;
+}

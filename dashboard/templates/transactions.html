@@ -20,7 +20,7 @@
       Add Transaction
     </button>
   </div>
-  {% for tranx in transactions %}
+  {% for tranx in transactions.object_list %}
   <div class="transaction" id="tranx_{{ tranx.id }}">
     {% if tranx.type == 'EXP' %}
     <span style="color: var(--red);">${{ tranx.amount }}</span>
@@ -49,6 +49,18 @@
     You have no transactions yet in your portfolio
   </p>
   {% endfor %}
+
+  <div class="paginator">
+    {% if transactions.has_previous %}
+    <a class="link" href="{% url 'transactions' %}?p={{transactions.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="page-number">
+      {{ transactions }}
+    </span>
+    {% if transactions.has_next %}
+    <a class="link" href="{% url 'transactions' %}?p={{transactions.next_page_number}}">Next</a>
+    {% endif %}
+  </div>
 </div>
 
 <div class="overlay" id="form_overlay">
