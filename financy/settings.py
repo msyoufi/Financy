@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "dashboard.User"
-LOGIN_URL = "/dashboard/login"
+LOGIN_URL = "/login"
 
 
 # Internationalization

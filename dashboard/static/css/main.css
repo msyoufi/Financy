@@ -20,7 +20,6 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   background-color: var(--background-color);
   color: #fff;
 }
@@ -85,6 +84,21 @@ header nav a:hover {
   background-color: var(--secondary-color);
 }
 
+@media (max-width: 650px) {
+  header {
+    flex-wrap: wrap;
+    height: 9rem;
+  }
+
+  #logo {
+    width: 100%;
+  }
+
+  .auth-nav {
+    margin-left: auto;
+  }
+}
+
 
 /* Auth Pages */
 
@@ -93,6 +107,7 @@ header nav a:hover {
   justify-content: space-around;
   align-items: center;
   margin-top: 3rem;
+  column-gap: 2rem;
 }
 
 #auth_title_image h3 {
@@ -136,15 +151,21 @@ header nav a:hover {
 @media (max-width: 650px) {
   #auth_wrapper {
     flex-direction: column;
-    padding: 0 2rem;
+    padding: 0 1rem;
+  }
+
+  #auth_title_image {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  #auth_title_image img,
+  #auth_title_image p {
+    display: none;
   }
 
   #auth_form {
     width: 100%;
-  }
-
-  #auth_title_image img {
-    display: none;
   }
 }
 
@@ -235,8 +256,11 @@ a {
   transition: .15s;
 }
 
-.link:hover {
+.link {
   text-decoration: underline;
+}
+
+.link:hover {
   color: var(--primary-color);
 }
 
@@ -259,6 +283,7 @@ a {
   display: none;
   width: 100vw;
   height: 100vh;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
   background-color: #1d1f2138;

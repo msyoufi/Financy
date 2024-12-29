@@ -11,7 +11,7 @@ function openAddForm() {
   setDateInputToNow();
   formTitle.innerText = 'Add a new Transaction';
   tranxSubmit.innerText = 'Add';
-  tranxForm.action = '/dashboard/transactions';
+  tranxForm.action = '/transactions';
   formOverlay.style.display = 'flex';
 }
 
@@ -19,7 +19,7 @@ function openEditForm(tranxId) {
   populateForm(tranxId);
   formTitle.innerText = 'Edit Transaction';
   tranxSubmit.innerText = 'Save';
-  tranxForm.action = '/dashboard/transactions/' + tranxId;
+  tranxForm.action = '/transactions/' + tranxId;
   formOverlay.style.display = 'flex';
 }
 
@@ -95,3 +95,14 @@ function closeDeleteDialog() {
   deleteButton.dataset.tranxId = '';
   deleteDialogOverlay.style.display = 'none';
 }
+
+// Close popups on overlay clicked
+document.querySelectorAll('.overlay').forEach(overlay => {
+  overlay.addEventListener('click', (event) => {
+    const isOverlay = event.target.id.includes('overlay');
+    if (isOverlay) {
+      overlay.style.display = 'none';
+      closeForm();
+    }
+  });
+});

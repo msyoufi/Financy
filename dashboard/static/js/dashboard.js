@@ -18,12 +18,12 @@ function renderCharts(chartsData) {
 }
 
 function renderPlaceholder() {
-  const container = document.querySelector(".placeholder");
+  const container = document.querySelector('.placeholder');
   container.innerHTML = `
     <p>You have no transactions yet in your portfolio</p>
     <p>
       Start adding
-      <a class="link" href="/dashboard/transactions">
+      <a class="link" href="/transactions">
         transactions</a>
       now
     </p>
@@ -34,7 +34,7 @@ function renderLineChart(data) {
   const options = {
     chart: {
       type: 'area',
-      height: '350',
+      height: '350px',
       foreColor: '#ffffff',
       toolbar: { show: false }
     },
@@ -69,7 +69,7 @@ function renderLineChart(data) {
     dataLabels: { enabled: false }
   }
 
-  const chartContainer = document.getElementById("value_chart");
+  const chartContainer = document.getElementById('value_chart');
   const chart = new ApexCharts(chartContainer, options);
   chart.render();
 }
@@ -78,7 +78,7 @@ function renderPieChart(data) {
   const options = {
     chart: {
       type: 'donut',
-      width: '450px',
+      height: '320px',
       foreColor: '#ffffff'
     },
     plotOptions: {
@@ -97,13 +97,13 @@ function renderPieChart(data) {
     },
     series: Object.values(data).map(val => Number(val)),
     labels: Object.keys(data),
-    title: { text: ' Cumulative Expenses by Category' },
+    title: { text: 'Cumulative Expenses by Category' },
     tooltip: {
       enabled: false
     }
   }
 
-  const chartContainer = document.getElementById("pie_chart");
+  const chartContainer = document.getElementById('pie_chart');
   const chart = new ApexCharts(chartContainer, options);
   chart.render();
 }
@@ -112,7 +112,6 @@ function renderBarChart(data) {
   const options = {
     chart: {
       type: 'bar',
-      width: '600px',
       foreColor: '#ffffff',
       toolbar: { show: false }
     },
@@ -144,7 +143,7 @@ function renderBarChart(data) {
     title: { text: 'Monthly Income VS Expenses (last 6 months)' }
   };
 
-  const chartContainer = document.getElementById("bar_chart");
+  const chartContainer = document.getElementById('bar_chart');
   const chart = new ApexCharts(chartContainer, options);
   chart.render();
 }

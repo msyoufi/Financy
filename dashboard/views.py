@@ -112,7 +112,7 @@ def transactions(request, tranx_id):
     user = request.user
 
     if tranx_id is None:
-        return JsonResponse({"error": "Must provide a transaction ID"}, status=400)
+        return JsonResponse({"error": "Missing transaction ID"}, status=400)
 
     try:
         tranx = Transaction.objects.get(user=user, id=tranx_id)
