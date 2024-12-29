@@ -111,14 +111,27 @@ The app uses plain HTML/CSS with Bootstrap for styling. This ensures responsiven
 Follow these steps to set up and run the Personal Finance Tracker:
 
 1. **Clone the Repository**:
-   Clone the project repository from GitHub to your local machine:
-   ```bash
+   Create a new folder and clone the project repository from GitHub to your local machine:
+   ```
    git clone <repository_url>
-   cd <project_directory>
+   cd financy
    ```
 
 2. **Install Dependencies**:
-   Make sure you have Python and pip installed. Install the required dependencies using:
+   Make sure you have Python and pip installed. Create a local vertual environment for example using the python venv module.
+    ```
+    python -m venv .venv
+    ```
+    Make sure to activate the VE befor installing any dependencies. To activate it on       Windows PowerShell:
+    ```
+    .venv\Scripts\Activate.ps1
+    ```
+    and on Linux/MacOS:
+    ```
+    .venv/bin/activate
+    ```
+
+    Finally install the required dependencies using:
    ```bash
    pip install -r requirements.txt
    ```
@@ -127,19 +140,19 @@ Follow these steps to set up and run the Personal Finance Tracker:
   
 3. **Set Up the Database**:
    Apply the database migrations to create the necessary tables:
-   ```bash
+   ```
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-4. **Create a Superuser**:
+4. **Create a Superuser (Optional)**:
    Create a superuser account to access the admin panel:
-   ```bash
+   ```
    python manage.py createsuperuser
 
 5. **Run the Development Server**:
    Start the development server to run the application:
-   ```bash
+   ```
    python manage.py runserver
    ```
 
