@@ -58,7 +58,10 @@ function renderLineChart(data) {
       axisTicks: { show: false },
       axisBorder: { show: false }
     },
-    yaxis: { labels: { formatter: currencyFormater } },
+    yaxis: {
+      min: 0,
+      labels: { formatter: currencyFormater }
+    },
     tooltip: {
       theme: 'dark',
       y: { formatter: currencyFormater }

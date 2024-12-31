@@ -1,5 +1,7 @@
 # Financy, The Personal Finance Tracker
 
+#### Video Demo:  https://youtu.be/R8xSAUrNs30
+
 ## Overview
 The **Personal Finance Tracker, Financy** is a web-based application designed to help users manage their finances efficiently. Built using Django framework, the app allows users to track their income and expenses, visualize their financial data through interactive charts, and gain insights into their spending habits. The project aims to promote better financial planning and decision-making by providing a simple, intuitive, and user-friendly interface.
 
